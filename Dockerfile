@@ -1,8 +1,9 @@
 # Use a imagem do Certbot
-FROM certbot/certbot:latest
-
+FROM node:latest
 # Instale dependências adicionais, se necessário
-RUN apk add --no-cache certbot-dns-cloudflare
+RUN apt-get update && \
+    apt-get install -y certbot python3 python3-pip && \
+    pip3 install certbot-dns-cloudflare
 
 # Execute o Certbot para obter o certificado
 RUN certbot certonly --dns-cloudflare -d hagap.com.br --email felipeestrela2006@gmail.com --agree-tos
