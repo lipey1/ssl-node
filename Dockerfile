@@ -8,4 +8,4 @@ RUN apt-get update \
 RUN apt-get update \
     && apt-get install -y certbot python3-certbot-nginx
     
-RUN certbot --nginx -d hagap.com.br
+RUN certbot --nginx -d $CERTBOT_DOMAIN --email $CERTBOT_EMAIL
